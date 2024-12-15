@@ -43,7 +43,7 @@ class Main:
                 print("Delete product")
 
             if choice == 5:
-                self.Inventory_Manager.save_Product_Data_To_File()
+                self.Data_Persistence_Management.save_Product_Data_To_File()
                 print("Product information saved successfully before exit")
                 run_Menu = 0
                 self.Product_list = []

@@ -19,11 +19,12 @@ class Inventory_Manager:
         for productItem in self.Product_list:
             print(f'{productItem.productId} | {productItem.productName} | ${productItem.productAmount} | ${productItem.productInventory}')
 
-    def edit_Product(self, productId_To_Edit, productName, productAmount):
+    def edit_Product(self, productId_To_Edit, productName, productAmount,productInventory):
         for productItem in self.Product_list:
             if productItem.productId == productId_To_Edit:
                 productItem.productName = productName
                 productItem.productAmount = productAmount
+                productItem.productInvenotry= productInventory
         return self.Product_list
 
     def delete_Product(self, productId_To_Delete):
