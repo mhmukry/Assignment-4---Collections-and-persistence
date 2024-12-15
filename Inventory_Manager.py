@@ -1,4 +1,5 @@
 import os.path
+import json
 from Product import Product
 
 class Inventory_Manager:
@@ -10,6 +11,7 @@ class Inventory_Manager:
 
     def add_Product(self, Product):
         self.Product_list.append(Product) 
+        return self.Product_list
 
     def view_Product(self):
         print(f'Id | Name | Amount')
@@ -22,35 +24,15 @@ class Inventory_Manager:
             if productItem.productId == productId_To_Edit:
                 productItem.productName = productName
                 productItem.productAmount = productAmount
+        return self.Product_list
 
-
-    def delete_Product(self, product, Product_list):
-        self.view_Product()
-
-        productId_To_Delete = int(input("Enter product ID to delete: "))
-        for productItem in self.Product_list:
+    def delete_Product(self, productId_To_Delete):
+         for productItem in self.Product_list:
             if productItem.productId == productId_To_Delete:
                 self.Product_list.remove(productItem)
-        print(f'productId:{productId_To_Delete} deleted')
-        self.view_Product()
 
-    def load_Product_Data_From_File(self):
+    def delete_product_list(self):
+        self.Product_list = []
 
-        if os.path.isfile("productFile.txt"):
-            product_File = open("productFile.txt", "r")
-            for product_line in product_File:           
-                product_Line_List=product_line.split(',')
-                productId = product_Line_List[0]
-                productName = product_Line_List[1]
-                productAmount = product_Line_List[2]
-                self.product = Product(productId,productName, productAmount)
-                self.Product_list.append(self.product) 
-            product_File.close()
-
-    def save_Product_Data_To_File(self):
-        productFile = open("productFile.txt", "w")
-        for productItem in self.Product_list:
-            productFile.write(f'{productItem.productId},{productItem.productName},{productItem.productAmount} \n')
-        productFile.close()
 
    
