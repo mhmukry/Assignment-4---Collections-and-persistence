@@ -58,7 +58,8 @@ class Main:
 
         productName = input("Please Enter Product Name: ")
         productAmount = self.get_user_input_float( "Enter Product Amount (0.01-1000):  ",  0.01,  1000.00)
-        self.Product = Product(productId,productName, productAmount)
+        productInventory = self.get_user_input_integer( "Enter Product Inventory (1-1000):  ",  1,  1000)
+        self.Product = Product(productId,productName, productAmount,productInventory)
         self.Inventory_Manager.add_Product(self.Product)
 
     def choice_view_Product(self):
@@ -70,8 +71,8 @@ class Main:
         productId_To_Edit = self.get_user_input_integer("Enter product ID to edit: ",  0,  100000)
         productName = input("Please Enter Product Name: ")
         productAmount = self.get_user_input_float( "Enter Product Amount (0.01-1000):  ",  0.01,  1000.00)
-  
-        self.Inventory_Manager.edit_Product(productId_To_Edit, productName, productAmount)
+        productInventory = self.get_user_input_integer( "Enter Product Inventory (1-1000):  ",  1,  1000)
+        self.Inventory_Manager.edit_Product(productId_To_Edit, productName, productAmount,productInventory)
         print(f'productId:{productId_To_Edit} Edited')
         self.choice_view_Product()
 
@@ -119,9 +120,6 @@ class Main:
                 self.showMainMenu()
             else:
                 run_program=0
-
-
-
 
 if __name__ == "__main__":
     app = Main()

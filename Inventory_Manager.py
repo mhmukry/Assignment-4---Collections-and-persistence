@@ -14,10 +14,10 @@ class Inventory_Manager:
         return self.Product_list
 
     def view_Product(self):
-        print(f'Id | Name | Amount')
-        print(f'------------------')
+        print(f'Id | Name | Amount | Inventory')
+        print(f'------------------------------ ')
         for productItem in self.Product_list:
-            print(f'{productItem.productId} | {productItem.productName} | ${productItem.productAmount}')
+            print(f'{productItem.productId} | {productItem.productName} | ${productItem.productAmount} | ${productItem.productInventory}')
 
     def edit_Product(self, productId_To_Edit, productName, productAmount):
         for productItem in self.Product_list:

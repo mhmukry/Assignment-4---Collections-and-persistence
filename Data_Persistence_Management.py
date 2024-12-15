@@ -18,7 +18,8 @@ class Data_Persistence_Management:
                 productId = int(product_Line_List[0])
                 productName = product_Line_List[1]
                 productAmount = float(product_Line_List[2])
-                self.Product = Product(productId,productName, productAmount)
+                productInventory = int(product_Line_List[3])
+                self.Product = Product(productId,productName, productAmount,productInventory)
                 self.Product_list.append(self.Product) 
             product_File.close()
         return self.Product_list
@@ -29,9 +30,9 @@ class Data_Persistence_Management:
         for productItem in self.Product_list:
             if first_line == 1:
                  first_line += 1
-                 productFile.write(f'{productItem.productId},{productItem.productName},{productItem.productAmount}')
+                 productFile.write(f'{productItem.productId},{productItem.productName},{productItem.productAmount},{productItem.productInventory}')
             else:
-                productFile.write(f'\n{productItem.productId},{productItem.productName},{productItem.productAmount}')
+                productFile.write(f'\n{productItem.productId},{productItem.productName},{productItem.productAmount},{productItem.productInventory}')
         productFile.close()
   
     def delete_product_list(self):
