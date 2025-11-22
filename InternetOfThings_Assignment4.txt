@@ -1,1 +1,1 @@
-dummy file 
+This is the updated content of file1.txt
